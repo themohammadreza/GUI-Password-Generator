@@ -1,7 +1,18 @@
-from password_generator import RandomPasswordGenerator, MemorablePasswordGenerator, PinGenerator
+import os
 import streamlit as st
+from password_generator import RandomPasswordGenerator, MemorablePasswordGenerator, PinGenerator
 
 
+picture_path = os.path.abspath(
+    os.path.join(
+        os.path.dirname(__file__),
+        "..",
+        "assets",
+        "password-generator-3.webp"
+    )
+)
+
+st.image(picture_path, width=400)
 st.title("Password Generator")
 
 password_type = st.selectbox("Select password type:", ["Random", "Memorable", "PIN"])
@@ -22,4 +33,5 @@ elif password_type == "PIN":
 
 if st.button("Generate Password"):
     password = generator.generate()
-    st.success(fr"Generated Password: ```{password}```")
+    st.write("Generated Password:")
+    st.code(password, language=None)
