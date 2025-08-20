@@ -56,7 +56,6 @@ class MemorablePasswordGenerator(PasswordGenerator):
     
     Args:
         words_no: Number of words to use in the password.
-        separator: Character used to join the words.
         capitalize: Whether to capitalize the generated password.
     """
 
